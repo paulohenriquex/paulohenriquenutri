@@ -720,3 +720,30 @@ footer {
     background: rgba(168, 85, 247, 0.08);
     box-shadow: 0 10px 28px rgba(168, 85, 247, 0.18);
 }
+
+/* --- ESTILOS DE BOTÕES E CHAMADAS (CTA) --- */
+
+.cta-box {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25D366;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1eb954;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
