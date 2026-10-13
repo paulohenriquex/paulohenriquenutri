@@ -1,26 +1,26 @@
 window.ARTIGO = {
     slug: 'erros-emagrecimento',
-    titulo: '5 erros que atrapalham quem quer emagrecer',
+    titulo: '5 erros clássicos que travam o seu emagrecimento (e o que fazer no lugar)',
     data: '2026-10-10',
-    resumo: 'Pular refeições, cortar carboidrato de vez, confiar em chás milagrosos... veja o que realmente funciona.',
+    resumo: 'Depois de 8 anos no consultório, percebi que o problema raramente é falta de vontade, mas sim estratégia errada. Entenda o que a ciência diz.',
     conteudo: `
-        <p>Emagrecer não é sobre sofrer, é sobre entender o que o seu corpo precisa. Estes são os erros que eu mais vejo no consultório:</p>
+        <p>A maioria das pessoas não falha no emagrecimento por falta de esforço. Falha porque está gastando energia nas coisas erradas. Após 8 anos atendendo em consultório, estes são os 5 erros mais frequentes que eu vejo no dia a dia:</p>
 
-        <h3>1. Pular o café da manhã</h3>
-        <p>Isso atrasa o metabolismo e faz você comer muito mais no almoço. O corpo entende como "escassez" e estoca energia.</p>
+        <h3>1. Focar em eliminar alimentos em vez de gerenciar o déficit calórico</h3>
+        <p>Você não precisa banir o pão, o arroz ou o chocolate para emagrecer. O corpo responde ao <strong>balanço energético positivo ou negativo</strong>. Cortar grupos alimentares inteiros só aumenta o estresse e a probabilidade de episódios de compulsão. O segredo é o ajuste de proporções e controle de porções.</p>
 
-        <h3>2. Cortar carboidrato totalmente</h3>
-        <p>O cérebro funciona com glicose. Você até perde peso rápido, mas volta tudo depois — e com juros. O segredo é escolher carboidratos de qualidade.</p>
+        <h3>2. Mudar tudo da noite para o dia</h3>
+        <p>Passar de uma rotina sedentária com ultraprocessados para treino 6 dias por semana e dieta restritiva é receita para desistir na terceira semana. Adesão e consistência superam qualquer dieta "perfeita" que você só consegue seguir por 10 dias.</p>
 
-        <h3>3. Confiar em chás milagrosos</h3>
-        <p>Nenhum chá faz milagre. O que funciona é <strong>déficit calórico consistente</strong> + atividade física regular.</p>
+        <h3>3. Apostar em atalhos e "produtos emagrecedores"</h3>
+        <p>Chás, géis redutores e suplementos "queimadores de gordura" não produzem perda de gordura significativa sem déficit calórico. No máximo, alguns possuem efeito diurético temporário — o que faz você perder água, não gordura corporal real.</p>
 
-        <h3>4. Não beber água suficiente</h3>
-        <p>A fome muitas vezes é sede disfarçada. Beba ao menos 35 ml por kg de peso por dia.</p>
+        <h3>4. Ignorar o consumo de proteínas e fibras</h3>
+        <p>Se você foca apenas em "comer menos", vai passar fome. A proteína e as fibras são os nutrientes com maior capacidade de promover a saciedade e preservar a sua massa muscular durante o processo de perda de peso.</p>
 
-        <h3>5. Querer resultado em uma semana</h3>
-        <p>Emagrecimento saudável é <strong>1 a 2 kg por mês</strong>. Mais que isso é ilusão (ou perda de massa magra).</p>
+        <h3>5. Ter expectativas irrealistas de prazo</h3>
+        <p>A velocidade da perda de peso depende do ponto de partida. Quer aquistar resultados sustentáveis sem perder massa magra? Esqueça as promessas de "menos 10 kg em 15 dias". O ritmo ideal depende do seu percentual de gordura e da sua rotina.</p>
 
-        <p>Quer um plano personalizado? Fala comigo no WhatsApp e a gente monta um que caiba na sua rotina.</p>
+        <p>Quer parar de tentar adivinhar o que funciona e ter um plano alimentar baseado na sua realidade? <a href="https://wa.me/seunumero" target="_blank">Clique aqui e fale comigo no WhatsApp</a> para agendarmos sua consulta.</p>
     `
 };

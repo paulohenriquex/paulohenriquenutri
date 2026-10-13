@@ -1,24 +1,22 @@
 window.ARTIGO = {
     slug: 'como-ler-rotulos',
-    titulo: 'Como ler rótulos de alimentos sem se perder',
+    titulo: 'Como ler rótulos de alimentos sem cair em armadilhas (e sem paranoia)',
     data: '2026-10-13',
-    resumo: 'A tabela nutricional não precisa ser um bicho de sete cabeças. Três pontos-chave para entender o que você está comprando.',
+    resumo: 'A tabela nutricional não precisa ser um enigma. Entenda a regra da ordem dos ingredientes, a lupa da ANVISA e como não ser enganado pelo marketing.',
     conteudo: `
-        <p>Aquele quadro pequeno atrás da embalagem assusta muita gente. Mas com três informações básicas, você já consegue fazer escolhas muito melhores no supermercado.</p>
+        <p>A indústria alimentícia gasta milhões na frente da embalagem para te convencer a comprar. O meu trabalho é te ensinar a olhar o verso. Com 3 passos práticos, você aprende a comparar produtos de verdade no supermercado, sem terrorismo e sem perder tempo.</p>
 
-        <h3>1. Olhe a porção, não o pacote</h3>
-        <p>Os valores são sempre <strong>por porção</strong>, não pelo pacote inteiro. Uma bolacha pode ter "80 kcal por porção", mas se você come o pacote todo, são 5 porções.</p>
+        <h3>1. A lista de ingredientes é mais importante que a tabela</h3>
+        <p>Antes de olhar calorias, vá direto para a <strong>lista de ingredientes</strong>. Ela segue obrigatoriamente a ordem decrescente: o primeiro ingrediente é o que mais tem no produto; o último é o que tem em menor quantidade.</p>
+        <p>Se os primeiros itens forem açúcar (ou seus vários nomes, como xarope de milho, maltodextrina e dextrose), gordura vegetal ou farinha refinada, você já sabe a base real daquele alimento.</p>
 
-        <h3>2. Compare sódio e açúcar</h3>
-        <p>Como regra prática: desconfie de produtos com mais de <strong>400 mg de sódio</strong> por porção. E se o açúcar aparecer entre os três primeiros ingredientes, é porque tem bastante.</p>
+        <h3>2. Cuidado com o "truque da porção" na tabela nutricional</h3>
+        <p>A tabela nutricional não mostra os valores da embalagem inteira, mas de uma <strong>porção padronizada</strong>. Um pacote de biscoito pode indicar "90 kcal", mas essa informação refere-se a apenas 3 unidades. Se você comer o pacote inteiro, consome 4 ou 5 vezes aquele valor. Sempre multiplique pela quantidade que você realmente consome.</p>
 
-        <h3>3. Cuidado com os "falsos saudáveis"</h3>
-        <ul>
-            <li>Barrinhas de cereal com muito açúcar</li>
-            <li>Iogurtes "zero" com adoçante em excesso</li>
-            <li>Sucos de caixinha cheios de conservantes</li>
-        </ul>
+        <h3>3. Use as lupas da ANVISA a seu favor (sem demonizar aditivos)</h3>
+        <p>Desde a nova regra de rotulagem, a lupa no painel frontal avisa se o produto tem <strong>alto teor de açúcar adicionado, gordura saturada ou sódio</strong> (ex: mais de 600 mg de sódio por 100 g em sólidos). Essa é a forma mais rápida de filtrar ultraprocessados.</p>
+        <p><strong>E um aviso sincero sobre aditivos:</strong> conservantes e adoçantes aprovados passam por testes rigorosos de segurança. O problema de um produto altamente processado não é o "conservante que inflama", mas sim o fato de ele ser pobre em fibras/proteínas e fácil de hiperconsumir.</p>
 
-        <p>Se ficou em dúvida sobre algum produto específico, me manda no WhatsApp que eu te ajudo a analisar.</p>
+        <p>Quer entender como ajustar as escolhas do supermercado à sua rotina real, sem dietas malucas? <a href="https://wa.me/seunumero" target="_blank">Clique aqui para falar comigo no WhatsApp</a> e agendar sua consulta.</p>
     `
 };
