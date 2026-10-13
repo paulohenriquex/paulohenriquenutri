@@ -464,6 +464,8 @@ h1 {
     padding: 36px 30px 30px;
     max-width: 380px;
     width: 100%;
+    max-height: 90vh;           /* ← NOVO */
+    overflow-y: auto;           /* ← NOVO */
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
     transform: scale(0.94) translateY(10px);
     transition: transform 0.35s var(--transicao);
