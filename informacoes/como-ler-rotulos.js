@@ -17,6 +17,15 @@ window.ARTIGO = {
         <p>Desde a nova regra de rotulagem, a lupa no painel frontal avisa se o produto tem <strong>alto teor de açúcar adicionado, gordura saturada ou sódio</strong> (ex: mais de 600 mg de sódio por 100 g em sólidos). Essa é a forma mais rápida de filtrar ultraprocessados.</p>
         <p><strong>E um aviso sincero sobre aditivos:</strong> conservantes e adoçantes aprovados passam por testes rigorosos de segurança. O problema de um produto altamente processado não é o "conservante que inflama", mas sim o fato de ele ser pobre em fibras/proteínas e fácil de hiperconsumir.</p>
 
-        <p>Quer entender como ajustar as escolhas do supermercado à sua rotina real, sem dietas malucas? <a href="https://wa.me/5538998349119?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank">Clique aqui para falar comigo no WhatsApp</a> e agendar sua consulta.</p>
-    `
+        <!-- CTA BONITO NO FINAL -->
+        <div class="cta-box">
+            <p class="cta-texto">Quer um plano alimentar baseado na sua realidade?</p>
+            <a href="https://wa.me/5538998349119?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="btn-whatsapp-artigo">
+                💬 Agendar consulta pelo WhatsApp
+            </a>
+        </div>
+    `   
 };

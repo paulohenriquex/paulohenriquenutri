@@ -39,7 +39,7 @@ body {
     align-items: center;
     padding: 24px;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     color: var(--texto);
 }
 
@@ -80,7 +80,7 @@ body::after {
 }
 
 /* ============================================
-   CARD
+   CARD PRINCIPAL / LINK IN BIO
    ============================================ */
 .card {
     position: relative;
@@ -101,7 +101,6 @@ body::after {
     animation: fadeUp 0.9s var(--transicao) both;
 }
 
-/* Linha de brilho sutil no topo do card */
 .card::before {
     content: '';
     position: absolute;
@@ -126,7 +125,7 @@ body::after {
 }
 
 /* ============================================
-   FOTO
+   FOTO DE PERFIL
    ============================================ */
 .foto-wrapper {
     position: relative;
@@ -217,7 +216,7 @@ h1 {
 }
 
 /* ============================================
-   BOTÕES
+   BOTÕES DO CARTÃO PRINCIPAL
    ============================================ */
 .botoes {
     display: flex;
@@ -254,7 +253,7 @@ h1 {
     transform: scale(1.1);
 }
 
-/* --- WhatsApp (destaque) --- */
+/* Botão WhatsApp Principal (Estilo Roxo Gradiente do Perfil) */
 .btn-whatsapp {
     background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
     color: #fff;
@@ -294,16 +293,21 @@ h1 {
     transform: translateY(0);
 }
 
-/* --- Maps e Instagram (outline) --- */
+/* Outros botões (Outline) */
 .btn-maps,
-.btn-instagram {
+.btn-instagram,
+.btn-imc,
+.btn-info {
     background: rgba(255, 255, 255, 0.02);
     color: #d8d8e2;
     border: 1px solid rgba(168, 85, 247, 0.22);
+    font-family: inherit;
 }
 
 .btn-maps:hover,
-.btn-instagram:hover {
+.btn-instagram:hover,
+.btn-imc:hover,
+.btn-info:hover {
     transform: translateY(-2px);
     color: #fff;
     border-color: var(--borda-hover);
@@ -311,7 +315,6 @@ h1 {
     box-shadow: 0 10px 28px rgba(168, 85, 247, 0.18);
 }
 
-/* Instagram ganha o gradiente só no hover */
 .btn-instagram:hover {
     background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
     border-color: transparent;
@@ -322,72 +325,106 @@ h1 {
     transform: translateY(0);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-footer {
-    margin-top: 34px;
-    font-size: 11px;
-    color: var(--texto-fraco);
-    letter-spacing: 0.4px;
-    font-weight: 400;
+/* Animação escalonada dos botões */
+.botoes .btn {
+    animation: fadeUp 0.7s var(--transicao) both;
 }
+
+.botoes .btn:nth-child(1) { animation-delay: 0.15s; }
+.botoes .btn:nth-child(2) { animation-delay: 0.25s; }
+.botoes .btn:nth-child(3) { animation-delay: 0.35s; }
+.botoes .btn:nth-child(4) { animation-delay: 0.45s; }
 
 /* ============================================
-   RESPONSIVO
+   ESTILOS DE ARTIGOS DO SITE
    ============================================ */
-@media (max-width: 480px) {
-    .card {
-        padding: 42px 26px 36px;
-        border-radius: 22px;
-    }
-    .foto {
-        width: 138px;
-        height: 138px;
-    }
-    h1 {
-        font-size: 23px;
-    }
-    .titulo {
-        font-size: 10px;
-        letter-spacing: 3px;
-    }
-    .btn {
-        padding: 14px 18px;
-        font-size: 14px;
-    }
+.artigo-container {
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
 }
 
-/* Acessibilidade: respeita quem prefere menos animação */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+.artigo-container h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    text-align: left;
 }
 
-/* ============================================
-   BOTÃO IMC (mesma família visual)
-   ============================================ */
-.btn-imc {
-    background: rgba(255, 255, 255, 0.02);
-    color: #d8d8e2;
-    border: 1px solid rgba(168, 85, 247, 0.22);
-    font-family: inherit;
+.artigo-container .artigo-data {
+    color: var(--texto-suave);
+    font-size: 13px;
+    margin-bottom: 24px;
 }
 
-.btn-imc:hover {
+.artigo-container h3 {
+    font-size: 20px;
+    color: var(--roxo-claro);
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.artigo-container p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+    margin-bottom: 18px;
+}
+
+.artigo-container strong {
+    color: var(--texto);
+}
+
+.artigo-container ul, 
+.artigo-container ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: var(--texto-suave);
+}
+
+.artigo-container li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* --- CAIXA DE CTA E BOTÃO WHATSAPP DO ARTIGO --- */
+.cta-box {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 28px 20px;
+    background: rgba(18, 18, 24, 0.85);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+}
+
+.btn-whatsapp-artigo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25D366;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
+    transition: all 0.3s var(--transicao);
+}
+
+.btn-whatsapp-artigo:hover {
+    background-color: #20ba5a;
     transform: translateY(-2px);
-    color: #fff;
-    border-color: var(--borda-hover);
-    background: rgba(168, 85, 247, 0.08);
-    box-shadow: 0 10px 28px rgba(168, 85, 247, 0.18);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
 }
 
 /* ============================================
-   MODAL
+   MODAL IMC
    ============================================ */
 .modal {
     position: fixed;
@@ -522,7 +559,6 @@ footer {
     box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.1);
 }
 
-/* Remove as setinhas do input number */
 .campo input::-webkit-outer-spin-button,
 .campo input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -561,7 +597,6 @@ footer {
     transform: translateY(0);
 }
 
-/* Resultado */
 .resultado {
     margin-top: 22px;
     padding: 20px;
@@ -592,7 +627,6 @@ footer {
     letter-spacing: 0.3px;
 }
 
-/* Faixas de referência */
 .faixas {
     margin-top: 20px;
     padding-top: 18px;
@@ -680,8 +714,40 @@ footer {
     }
 }
 
-/* Ajuste do float em mobile */
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    margin-top: 34px;
+    font-size: 11px;
+    color: var(--texto-fraco);
+    letter-spacing: 0.4px;
+    font-weight: 400;
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
 @media (max-width: 480px) {
+    .card {
+        padding: 42px 26px 36px;
+        border-radius: 22px;
+    }
+    .foto {
+        width: 138px;
+        height: 138px;
+    }
+    h1 {
+        font-size: 23px;
+    }
+    .titulo {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+    .btn {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
     .float-wpp {
         width: 52px;
         height: 52px;
@@ -692,58 +758,80 @@ footer {
         width: 24px;
         height: 24px;
     }
+    .artigo-container h1 {
+        font-size: 24px;
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* ============================================
-   ANIMAÇÃO ESCALONADA DOS BOTÕES
+   CTA NO FINAL DO ARTIGO
    ============================================ */
-.botoes .btn {
-    animation: fadeUp 0.7s var(--transicao) both;
-}
-
-.botoes .btn:nth-child(1) { animation-delay: 0.15s; }
-.botoes .btn:nth-child(2) { animation-delay: 0.25s; }
-.botoes .btn:nth-child(3) { animation-delay: 0.35s; }
-.botoes .btn:nth-child(4) { animation-delay: 0.45s; }
-
-.btn-info {
-    background: rgba(255, 255, 255, 0.02);
-    color: #d8d8e2;
-    border: 1px solid rgba(168, 85, 247, 0.22);
-    font-family: inherit;
-}
-
-.btn-info:hover {
-    transform: translateY(-2px);
-    color: #fff;
-    border-color: var(--borda-hover);
-    background: rgba(168, 85, 247, 0.08);
-    box-shadow: 0 10px 28px rgba(168, 85, 247, 0.18);
-}
-
-/* --- ESTILOS DE BOTÕES E CHAMADAS (CTA) --- */
-
 .cta-box {
-    margin-top: 35px;
-    margin-bottom: 20px;
+    margin-top: 36px;
+    padding: 28px 24px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(168, 85, 247, 0.08));
+    border: 1px solid rgba(168, 85, 247, 0.25);
     text-align: center;
 }
 
-.btn-whatsapp {
-    display: inline-block;
-    background-color: #25D366;
-    color: #ffffff !important;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    padding: 14px 28px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+.cta-texto {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.2px;
 }
 
-.btn-whatsapp:hover {
-    background-color: #1eb954;
+.btn-whatsapp-artigo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+    color: #fff;
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: inherit;
+    transition: all 0.3s var(--transicao);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 8px 24px rgba(124, 58, 237, 0.35);
+}
+
+.btn-whatsapp-artigo:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 14px 32px rgba(124, 58, 237, 0.55);
+}
+
+.btn-whatsapp-artigo:active {
+    transform: translateY(0);
+}
+
+/* Link no meio do texto do artigo */
+.artigo .conteudo a {
+    color: var(--roxo-claro);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+    transition: all 0.2s var(--transicao);
+}
+
+.artigo .conteudo a:hover {
+    color: #fff;
+    border-bottom-color: var(--roxo-claro);
 }
