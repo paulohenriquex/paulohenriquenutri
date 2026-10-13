@@ -21,6 +21,6 @@ window.ARTIGO = {
         <h3>5. Ter expectativas irrealistas de prazo</h3>
         <p>A velocidade da perda de peso depende do ponto de partida. Quer aquistar resultados sustentáveis sem perder massa magra? Esqueça as promessas de "menos 10 kg em 15 dias". O ritmo ideal depende do seu percentual de gordura e da sua rotina.</p>
 
-        <p>Quer parar de tentar adivinhar o que funciona e ter um plano alimentar baseado na sua realidade? <a href="https://wa.me/seunumero" target="_blank">Clique aqui e fale comigo no WhatsApp</a> para agendarmos sua consulta.</p>
+        <p>Quer parar de tentar adivinhar o que funciona e ter um plano alimentar baseado na sua realidade? <a href="https://wa.me/5538998349119?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank">Clique aqui e fale comigo no WhatsApp</a> para agendarmos sua consulta.</p>
     `
 };
