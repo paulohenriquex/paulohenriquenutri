@@ -4,3 +4,11 @@
 
 # Foto original em alta resolução (backup — não publicar no site)
 img1-original.jpeg
+
+# Painel de estatísticas: ferramenta local, não vai para o site público
+painel.html
+painel.css
+painel.js
+
+# Anotações locais
+COMO-MEDIR-ACESSOS.md
