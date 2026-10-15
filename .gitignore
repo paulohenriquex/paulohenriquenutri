@@ -7,8 +7,11 @@ img1-original.jpeg
 
 # Painel de estatísticas: ferramenta local, não vai para o site público
 painel.html
-painel.css
-painel.js
+css/painel.css
+js/painel.js
+
+# Chave da API do GoatCounter usada pelo painel local (NUNCA publicar)
+NUNCA-PUBLICAR-chave.json
 
 # Anotações locais
 COMO-MEDIR-ACESSOS.md

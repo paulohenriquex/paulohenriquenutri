@@ -21,7 +21,7 @@
 (function () {
     var CONFIG = {
         // Código da conta GoatCounter (o endereço é CODIGO.goatcounter.com)
-        CODIGO: 'paulohenriquenutri',
+        CODIGO: 'https://paulohenriquenutri.goatcounter.com',
 
         // Em qual endereço a contagem roda. Só mude se usar domínio próprio.
         URL: 'https://gc.zgo.at/count.js',
