@@ -40,16 +40,78 @@ const ARTIGOS = [
 
         document.title = artigo.titulo + ' - Paulo Henrique Souza';
 
+        // Atualiza também o preview de compartilhamento
+        const descricao = document.querySelector('meta[name="description"]');
+        const ogTitulo = document.querySelector('meta[property="og:title"]');
+        const ogDescricao = document.querySelector('meta[property="og:description"]');
+        if (descricao) descricao.setAttribute('content', artigo.resumo);
+        if (ogTitulo) ogTitulo.setAttribute('content', artigo.titulo);
+        if (ogDescricao) ogDescricao.setAttribute('content', artigo.resumo);
+
+        const dataFormatada = formatarData(artigo.data);
+        const tempo = tempoDeLeitura(artigo.conteudo);
+
+        container.classList.add('reveal');
+
         container.innerHTML = `
             <h1>${artigo.titulo}</h1>
-            <div class="data">${formatarData(artigo.data)}</div>
+            <div class="meta">
+                <span>${dataFormatada}</span>
+                <span class="sep" aria-hidden="true"></span>
+                <span>${tempo} min de leitura</span>
+            </div>
             <div class="conteudo">${artigo.conteudo}</div>
         `;
+
+        // Ativa as animações e a barra de progresso (funções de script.js)
+        if (typeof revelarAoRolar === 'function') {
+            revelarAoRolar();
+        } else {
+            // Independência total: sem script.js o texto aparece mesmo assim.
+            container.classList.add('is-visible');
+        }
+        iniciarProgressoDeLeitura();
     } catch (e) {
         console.error(e);
         container.innerHTML = '<div class="carregando">Erro ao carregar.</div>';
     }
 })();
+
+// --------------------------------------------
+// Barra fina de progresso no topo da página
+// --------------------------------------------
+function iniciarProgressoDeLeitura() {
+    const barra = document.createElement('div');
+    barra.className = 'leitura-progresso';
+    barra.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(barra);
+
+    let agendado = false;
+
+    function atualizar() {
+        agendado = false;
+        const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+        const progresso = alturaTotal > 0 ? Math.min(window.scrollY / alturaTotal, 1) : 0;
+        barra.style.transform = `scaleX(${progresso})`;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (agendado) return;
+        agendado = true;
+        window.requestAnimationFrame(atualizar);
+    }, { passive: true });
+
+    atualizar();
+}
+
+// --------------------------------------------
+// Tempo estimado de leitura (200 palavras/min)
+// --------------------------------------------
+function tempoDeLeitura(html) {
+    const texto = String(html).replace(/<[^>]*>/g, ' ');
+    const palavras = texto.split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(palavras / 200));
+}
 
 function formatarData(iso) {
     const [ano, mes, dia] = iso.split('-');

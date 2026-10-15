@@ -1,251 +1,522 @@
+/* ============================================================
+   PÁGINAS INTERNAS — LISTA DE INFORMAÇÕES E ARTIGO
+   Depende dos tokens definidos em style.css
+   ============================================================ */
+
 /* ============================================
-   PÁGINA DE INFORMAÇÕES
+   PÁGINA
    ============================================ */
 body.pagina-info {
     display: block;
-    overflow-y: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
     padding: 0;
-    background: var(--preto);
 }
 
-.topo {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 40px 24px 30px;
-    text-align: center;
+.topo,
+.lista-info,
+.pagina-info .artigo,
+.rodape-info {
     position: relative;
     z-index: 1;
 }
 
+/* ============================================
+   TOPO (nav sticky)
+   ============================================ */
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 14px 24px 18px;
+    background: linear-gradient(180deg, rgba(8, 8, 12, 0.88) 0%, rgba(8, 8, 12, 0.66) 70%, rgba(8, 8, 12, 0) 100%);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.topo-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* Voltar — fica na primeira coluna, alinhado à esquerda */
+.topo-inner .voltar {
+    justify-self: start;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.topo-centro {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    min-width: 0;
+}
+
 .voltar {
-    position: absolute;
-    top: 40px;
-    left: 24px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    padding: 8px 13px 8px 10px;
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
     color: var(--texto-suave);
-    text-decoration: none;
     font-size: 13px;
     font-weight: 500;
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: 1px solid rgba(168, 85, 247, 0.15);
-    transition: all 0.25s var(--transicao);
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
 }
 
 .voltar:hover {
     color: #fff;
     border-color: var(--borda-hover);
-    background: rgba(168, 85, 247, 0.08);
+    background: rgba(139, 92, 246, 0.1);
+    transform: translateX(-2px);
 }
 
 .voltar svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
+    transition: transform 0.3s var(--ease);
+}
+
+.voltar:hover svg {
+    transform: translateX(-2px);
+}
+
+/* Selo de marca sutil no canto direito */
+.topo-marca {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--texto-fraco);
+    white-space: nowrap;
 }
 
 .topo h1 {
-    font-size: 32px;
+    font-size: clamp(21px, 4vw, 27px);
     font-weight: 700;
     letter-spacing: -0.6px;
-    margin-bottom: 8px;
-    background: linear-gradient(180deg, #fff 0%, #c9c9d6 100%);
+    line-height: 1.15;
+    margin-bottom: 4px;
+    background: linear-gradient(170deg, #ffffff 20%, #b9b9cc 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .topo-sub {
-    color: var(--texto-suave);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 300;
+    color: var(--texto-suave);
+}
+
+/* ============================================
+   BARRA DE PROGRESSO DE LEITURA
+   ============================================ */
+.leitura-progresso {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 70;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--roxo-escuro), var(--roxo-claro));
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+    transition: transform 0.12s linear;
+    pointer-events: none;
 }
 
 /* ============================================
    LISTA DE ARTIGOS
    ============================================ */
 .lista-info {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 12px 24px 60px;
 }
 
 .carregando {
+    padding: 48px 0;
     text-align: center;
-    color: var(--texto-suave);
-    font-size: 14px;
-    padding: 40px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--texto-fraco);
 }
 
 .card-info {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    --d: calc(var(--i, 0) * 0.07s);
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 22px;
+    align-items: center;
+    padding: 24px 26px;
     border: 1px solid var(--borda);
     border-radius: 18px;
-    padding: 26px 26px 22px;
-    transition: all 0.3s var(--transicao);
-    animation: fadeUp 0.6s var(--transicao) both;
-    cursor: pointer;
+    background: var(--superficie);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     text-decoration: none;
     color: inherit;
-    display: block;
+    overflow: hidden;
+    transition:
+        transform 0.45s var(--ease),
+        border-color 0.45s var(--ease),
+        background-color 0.45s var(--ease),
+        box-shadow 0.45s var(--ease);
+}
+
+/* Fio de luz que cresce no hover */
+.card-info::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 2px;
+    border-radius: 0 2px 2px 0;
+    background: linear-gradient(180deg, transparent, var(--roxo), transparent);
+    opacity: 0;
+    transition: opacity 0.45s var(--ease);
 }
 
 .card-info:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     border-color: var(--borda-hover);
-    box-shadow: 0 16px 40px rgba(124, 58, 237, 0.2);
+    background: var(--superficie-alta);
+    box-shadow: 0 18px 44px rgba(76, 29, 149, 0.28);
 }
 
-.card-info h2 {
-    font-size: 19px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 8px;
-    letter-spacing: -0.3px;
-    line-height: 1.3;
+.card-info:hover::before {
+    opacity: 1;
+}
+
+.card-info .indice {
+    align-self: start;
+    padding-top: 3px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--texto-fraco);
+    transition: color 0.45s var(--ease);
+}
+
+.card-info:hover .indice {
+    color: var(--roxo-claro);
+}
+
+.card-info .card-texto {
+    min-width: 0;
 }
 
 .card-info .data {
-    font-size: 11px;
-    color: var(--roxo-claro);
+    margin-bottom: 9px;
+    font-family: var(--mono);
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    color: var(--roxo-claro);
+    opacity: 0.85;
+}
+
+.card-info h2 {
+    margin-bottom: 9px;
+    font-size: 18.5px;
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: -0.35px;
+    color: #fff;
+    transition: color 0.45s var(--ease);
+}
+
+.card-info:hover h2 {
+    color: var(--roxo-claro);
 }
 
 .card-info .resumo {
     font-size: 14px;
-    color: var(--texto-suave);
-    line-height: 1.6;
     font-weight: 300;
+    line-height: 1.65;
+    color: var(--texto-suave);
+    text-wrap: pretty;
 }
 
-.card-info .ler-mais {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 14px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--roxo-claro);
-    transition: gap 0.25s var(--transicao);
+.card-info .card-seta {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 50%;
+    color: var(--texto-suave);
+    transition: all 0.45s var(--ease);
 }
 
-.card-info:hover .ler-mais {
-    gap: 10px;
+.card-info .card-seta svg {
+    width: 16px;
+    height: 16px;
 }
 
-.card-info .ler-mais svg {
-    width: 14px;
-    height: 14px;
-}
-
-.rodape-info {
-    text-align: center;
-    font-size: 11px;
-    color: var(--texto-fraco);
-    padding: 30px 24px;
-    letter-spacing: 0.4px;
+.card-info:hover .card-seta {
+    transform: translateX(4px);
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(109, 40, 217, 0.4);
 }
 
 /* ============================================
-   PÁGINA DE ARTIGO INDIVIDUAL
+   ARTIGO INDIVIDUAL
    ============================================ */
-.artigo {
-    max-width: 720px;
+.pagina-info .artigo {
+    max-width: 740px;
     margin: 0 auto;
-    padding: 0 24px 60px;
-    position: relative;
-    z-index: 1;
+    padding: 6px 24px 70px;
 }
 
-.artigo h1 {
-    font-size: 30px;
+.pagina-info .artigo h1 {
+    margin-bottom: 18px;
+    font-size: clamp(26px, 5vw, 36px);
     font-weight: 700;
-    letter-spacing: -0.5px;
-    line-height: 1.25;
-    margin-bottom: 14px;
-    background: linear-gradient(180deg, #fff 0%, #c9c9d6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1.2;
+    letter-spacing: -0.9px;
     text-align: left;
+    text-wrap: balance;
+    background: linear-gradient(170deg, #ffffff 15%, #b3b3c8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.artigo .data {
-    font-size: 11px;
-    color: var(--roxo-claro);
-    font-weight: 500;
-    letter-spacing: 2px;
+/* Linha de metadados */
+.artigo .meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 34px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
-    margin-bottom: 28px;
+    color: var(--texto-suave);
+}
+
+.artigo .meta .sep {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--roxo);
+    opacity: 0.8;
 }
 
 .artigo .conteudo {
-    color: var(--texto-suave);
-    font-size: 15.5px;
-    line-height: 1.75;
+    font-size: 16.5px;
     font-weight: 300;
+    line-height: 1.78;
+    letter-spacing: 0.1px;
+    color: var(--texto-suave);
+    text-wrap: pretty;
 }
 
 .artigo .conteudo p {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+}
+
+/* Parágrafo de abertura um pouco maior */
+.artigo .conteudo > p:first-of-type {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #c9c9d8;
 }
 
 .artigo .conteudo h3 {
-    font-size: 18px;
+    position: relative;
+    margin: 34px 0 14px;
+    padding-left: 16px;
+    font-size: 19px;
     font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.35px;
     color: #fff;
-    margin: 26px 0 12px;
-    letter-spacing: -0.3px;
 }
 
-.artigo .conteudo ul {
-    margin: 12px 0 18px 22px;
-}
-
-.artigo .conteudo li {
-    margin-bottom: 8px;
+.artigo .conteudo h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--roxo-claro), var(--roxo-escuro));
 }
 
 .artigo .conteudo strong {
-    color: #fff;
     font-weight: 600;
+    color: #fff;
 }
 
-@media (max-width: 480px) {
+.artigo .conteudo ul,
+.artigo .conteudo ol {
+    margin: 14px 0 20px 22px;
+}
+
+.artigo .conteudo li {
+    margin-bottom: 9px;
+}
+
+.artigo .conteudo li::marker {
+    color: var(--roxo);
+}
+
+.artigo .conteudo blockquote {
+    margin: 26px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 2px solid var(--roxo);
+    font-size: 17px;
+    font-style: italic;
+    color: #c9c9d8;
+}
+
+.artigo .conteudo a {
+    border-bottom: 1px solid rgba(196, 181, 253, 0.35);
+}
+
+/* ============================================
+   RODAPÉ
+   ============================================ */
+.rodape-info {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 26px 24px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--texto-fraco);
+}
+
+/* ============================================
+   LINK "VOLTAR AO INÍCIO" NO FIM DO ARTIGO
+   ============================================ */
+.rodape-info .rodape-link {
+    color: var(--texto-suave);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+    transition: all 0.25s var(--ease);
+}
+
+.rodape-info .rodape-link:hover {
+    color: #fff;
+    border-bottom-color: var(--roxo-claro);
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+@media (max-width: 640px) {
     .topo {
-        padding: 30px 20px 24px;
+        padding: 12px 16px 16px;
     }
+
+    /* Voltar em cima, título abaixo — sem sobreposição */
+    .topo-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .topo-inner .voltar {
+        order: 1;
+    }
+
+    .topo-marca {
+        display: none;
+    }
+
+    .topo-centro {
+        order: 2;
+        flex: 1 0 100%;
+        text-align: left;
+    }
+
     .topo h1 {
-        font-size: 26px;
+        font-size: 22px;
     }
-    .voltar {
-        top: 30px;
-        left: 20px;
-        padding: 6px 10px;
-        font-size: 12px;
+
+    .topo-sub {
+        font-size: 12.5px;
     }
-    .lista-info, .artigo {
-        padding-left: 20px;
-        padding-right: 20px;
+
+    .lista-info {
+        gap: 12px;
+        padding: 8px 16px 48px;
     }
+
     .card-info {
-        padding: 22px 20px 18px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 14px;
+        padding: 20px 18px;
     }
+
+    .card-info .indice {
+        display: none;
+    }
+
     .card-info h2 {
         font-size: 17px;
     }
-    .artigo h1 {
-        font-size: 24px;
+
+    .card-info .resumo {
+        font-size: 13.5px;
+    }
+
+    .card-info .card-seta {
+        width: 34px;
+        height: 34px;
+    }
+
+    .pagina-info .artigo {
+        padding: 4px 18px 56px;
+    }
+
+    .artigo .conteudo {
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    .artigo .conteudo > p:first-of-type {
+        font-size: 17px;
+    }
+
+    .artigo .conteudo h3 {
+        font-size: 18px;
+        margin-top: 28px;
+    }
+
+    .rodape-info {
+        padding: 22px 18px 34px;
     }
 }

@@ -50,20 +50,34 @@ const ARTIGOS = [
         // Renderiza
         container.innerHTML = validos.map((artigo, i) => `
             <a href="artigo.html?id=${encodeURIComponent(artigo.slug)}"
-               class="card-info"
-               style="animation-delay: ${i * 0.08}s">
-                <div class="data">${formatarData(artigo.data)}</div>
-                <h2>${artigo.titulo}</h2>
-                <p class="resumo">${artigo.resumo}</p>
-                <span class="ler-mais">
-                    Ler mais
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+               class="card-info reveal"
+               style="--i:${i}"
+               aria-label="Ler: ${artigo.titulo}">
+                <span class="indice" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+
+                <span class="card-texto">
+                    <span class="data">${formatarData(artigo.data)}</span>
+                    <h2>${artigo.titulo}</h2>
+                    <span class="resumo">${artigo.resumo}</span>
+                </span>
+
+                <span class="card-seta" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"/>
                         <polyline points="12 5 19 12 12 19"/>
                     </svg>
                 </span>
             </a>
         `).join('');
+
+        // Ativa as animações de entrada (função definida em script.js)
+        if (typeof revelarAoRolar === 'function') {
+            revelarAoRolar();
+        } else {
+            // Independência total: se script.js não estiver na página,
+            // os cards aparecem mesmo assim (nunca ficam invisíveis).
+            container.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        }
     } catch (e) {
         console.error(e);
         container.innerHTML = '<div class="carregando">Erro ao carregar informações.</div>';
